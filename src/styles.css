@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+    margin: 0;
+}
+
+.flex-spacer {
+    flex: 1 1 auto;
+}
+.toolbar-sidenav-container {
+    height: 100vh;
+    width: 100vw;
+}
+
+.mat-drawer.toolbar-sidenav {
+    min-width: 300px;
+}
+
+.mat-button.button__mufa-toolbar {
+    min-width: 46px;
+    padding: 0;
+}
+
+.mat-toolbar.mufa-toolbar {
+    padding-left: 8px;
+}
+
+.mat-toolbar .h1__mufa-toolbar {
+    margin-left: 8px;
+}
