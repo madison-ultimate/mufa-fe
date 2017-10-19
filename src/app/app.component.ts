@@ -1,21 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LeagueService } from './leagues/leagues.service';
+import { League } from './leagues/league';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [LeagueService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  selectedLeague = {
+  selectedLeague: League = {
     id: null,
     name: null
   };
+  activeLeagues: League[];
 
-  activeLeagues = [
-    { id: 1, name: 'Swiss ABCD T/Th' },
-    { id: 2, name: 'Swiss BCD M/W' }
-  ]
+  constructor(private leagueService: LeagueService) {}
+
+  getActiveLeagues(): void {
+    this.leagueService.getActiveLeagues()
+      .then(leagues => this.activeLeagues = leagues);
+  }
+
+  ngOnInit() {
+    this.getActiveLeagues();
+  }
 
   // if signed in
     // if registered for any active leagues
