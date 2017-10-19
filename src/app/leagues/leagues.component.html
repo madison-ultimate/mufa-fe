@@ -4,7 +4,7 @@
   <p>Select a league to see its schedule, registered players, teams, etc.</p>
   <mat-list>
     <h3 mat-subheader>Active leagues</h3>
-    <mat-list-item>League name</mat-list-item>
+    <mat-list-item *ngFor="let league of activeLeagues">{{ league.name }}</mat-list-item>
   </mat-list>
   <!--
     Logged in:
