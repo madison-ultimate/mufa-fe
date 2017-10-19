@@ -2,22 +2,87 @@
   <button mat-button (click)="sidenav.open()" class="button__mufa-toolbar" matTooltip="Menu" matTooltipShowDelay="400">
     <mat-icon>menu</mat-icon>
   </button>
-  <h1 class="h1__mufa-toolbar">MUFA</h1>
+  <h1 class="h1__mufa-toolbar">
+    <a routerLink="/home">MUFA</a>
+  </h1>
+  <!-- Placeholder content -->
+  &nbsp;
+  <span class="subheading__mufa-toolbar">{{ selectedLeague.name }}</span>
   <span class="flex-spacer"></span>
+  <!-- If selected league -->
+  
+  <!-- <button routerLink="/schedule" mat-button>
+    <span>Schedule</span>
+  </button> -->
+  
+  <!-- End placeholder content -->
   <button mat-button class="button__mufa-toolbar" [matMenuTriggerFor]="userMenu" matTooltip="Account" matTooltipShowDelay="400">
     <mat-icon>account_circle</mat-icon>
   </button>
   <mat-menu #userMenu="matMenu" [overlapTrigger]="false">
-      <button mat-menu-item>
-        <span>Profile</span>
-      </button>
-      <button mat-menu-item>
-        <span>Log out</span>
-      </button>
-    </mat-menu>
+    <!-- Signed in -->  
+    
+    <!-- <a routerLink="/profile" mat-menu-item>
+      <span>Profile</span>
+    </a>
+    <button mat-menu-item>
+      <span>Log out</span>
+    </button> -->
+    
+    <!-- Not signed in -->
+    <button mat-menu-item>
+      <span>Log in</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>
+
 <mat-sidenav-container class="toolbar-sidenav-container">
+
+  <!-- Page content -->
+  <router-outlet></router-outlet>
+
   <mat-sidenav #sidenav class="toolbar-sidenav">
     
+    <!-- If there is no signed in user, show league select drop down of active leagues -->
+    <form>
+      <mat-form-field>
+        <mat-select placeholder="Select league" [(ngModel)]="selectedLeague" name="league">
+          <mat-option *ngFor="let league of activeLeagues" [value]="league">
+            {{ league.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+    
+    <!-- 
+      If there is a signed in user, repeat league-related options for each league that person is in, which a subheader
+    -->
+    
+    <!-- <a routerLink="/schedule" mat-menu-item>
+      <mat-icon>event</mat-icon>
+      <span>Schedule</span>
+    </a>
+    <a routerLink="/standings" mat-menu-item>
+      <mat-icon>list</mat-icon>
+      <span>Standings</span>
+    </a>
+    <a routerLink="/teams" mat-menu-item>
+      <mat-icon>people</mat-icon>
+      <span>Teams</span>
+    </a>
+    <a routerLink="/players" mat-menu-item>
+      <mat-icon>person</mat-icon>
+      <span>Players</span>
+    </a> -->
+    
+    <!-- Always present -->
+    <a routerLink="/rules" mat-menu-item>
+      <mat-icon>book</mat-icon>
+      <span>Rules</span>
+    </a>
+    <a routerLink="/locations" mat-menu-item>
+      <mat-icon>place</mat-icon>
+      <span>Locations</span>
+    </a>
   </mat-sidenav>    
 </mat-sidenav-container>
