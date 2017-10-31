@@ -7,8 +7,10 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
+    "test:once": "ng test --watch=false",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "ci": "ng lint && npm run test:once && ng e2e"
   },
   "private": true,
   "dependencies": {
