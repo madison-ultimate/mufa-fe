@@ -10,7 +10,7 @@
     "test:once": "ng test --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "ci": "ng lint && npm run test:once && ng e2e"
+    "ci": "ng lint && npm run test:once && ng e2e && ng build"
   },
   "private": true,
   "dependencies": {
